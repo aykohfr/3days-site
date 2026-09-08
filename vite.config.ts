@@ -6,5 +6,15 @@ export default defineConfig({
   build: {
     target: 'es2022',
     sourcemap: false,
+    cssCodeSplit: true,
+    reportCompressedSize: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          motion: ['gsap', 'lenis'],
+          three: ['three', '@react-three/fiber', '@react-three/drei'],
+        },
+      },
+    },
   },
 })
