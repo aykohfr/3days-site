@@ -1,6 +1,6 @@
 # AYKOH — Digital Experience
 
-Experimental high-end portfolio / creative developer experience.
+Portfolio expérimental premium orienté creative development, motion et 3D temps réel.
 
 ## Stack
 
@@ -8,30 +8,36 @@ Experimental high-end portfolio / creative developer experience.
 - Vite 8
 - Three.js + React Three Fiber
 - GSAP / ScrollTrigger
-- Lenis smooth scrolling
-- Lottie runtime
+- Lenis
+- Lottie React v3
 
-## Run
+## Lancer le projet
 
 ```bash
 npm install
 npm run dev
 ```
 
-Production build:
+Build production :
 
 ```bash
 npm run build
 ```
 
-## Visual direction
+## Animations de scroll
 
-The UI is authored directly in code from a Figma-style design system: strict spacing grid, editorial typography, monochrome palette with acid accent, oversized display type, high-contrast cards and responsive states.
+Les animations sont pilotées par `ScrollTrigger` avec `scrub` : elles suivent réellement la position du scroll. En descendant elles avancent, et en remontant elles se rejouent naturellement dans le sens inverse.
 
-## After Effects / Lottie handoff
+## Performance / accessibilité
 
-The repository is wired for Lottie playback. `src/ae/loader.json` is a **temporary web-authored placeholder** used so the loading experience works immediately; it is not claimed to be an After Effects export.
+La scène Three.js est chargée après l'écran d'introduction et uniquement sur les appareils suffisamment larges qui n'ont pas demandé une réduction des animations. Une alternative CSS légère reste visible ailleurs. Le site respecte aussi `prefers-reduced-motion`, utilise des styles de focus clavier, un lien d'évitement et du HTML sémantique.
 
-To satisfy a strict “animations created in After Effects” production requirement, create the final motion compositions in After Effects, export them through Bodymovin/Lottie, then replace the corresponding JSON file(s) in `src/ae/` while preserving their paths. The React integration will continue to work without structural changes.
+## After Effects / Lottie
 
-This repository does not contain `.aep` or `.fig` source files because those applications are not available in the execution environment used for this build.
+`public/ae/loader.json` est le fichier Lottie utilisé par le loading screen. L'intégration web est finalisée et accepte directement un export Bodymovin/Lottie d'After Effects à ce même emplacement.
+
+Important : l'environnement ayant servi à construire ce dépôt ne contient pas l'application Adobe After Effects ni Figma. Le JSON fourni sert de motion asset compatible Lottie et de point de remplacement ; il ne doit pas être présenté comme un fichier `.aep` créé dans After Effects. Pour une conformité stricte « animation créée dans After Effects », remplacez ce JSON par l'export Bodymovin de la composition AE finale.
+
+## Figma
+
+La direction visuelle suit un système de design de type Figma (grille, spacing, hiérarchie, contrastes, composants, responsive), mais aucun fichier `.fig` natif n'est généré par cet environnement.
