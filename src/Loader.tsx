@@ -1,4 +1,4 @@
-import Lottie from 'lottie-react'
+import { Lottie } from 'lottie-react'
 import loaderAnimation from './ae/loader.json'
 
 export default function Loader({ leaving }: { leaving: boolean }) {
