@@ -5,7 +5,7 @@ export default function Loader({ leaving }: { leaving: boolean }) {
   return (
     <div className={`loader ${leaving ? 'loader--leaving' : ''}`}>
       <div className="loader__mark">
-        <Lottie animationData={loaderAnimation} loop autoplay />
+        <Lottie src={loaderAnimation} loop autoplay />
         <span>A</span>
       </div>
       <div className="loader__meta">
